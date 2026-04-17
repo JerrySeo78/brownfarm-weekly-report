@@ -217,12 +217,32 @@
         <tbody>
           <tr><td>DC 라인 브라운팜 마이너 갤러리</td><td>직접 접근 성공. 7일 내 0건. 최신: 2025-12-22.</td></tr>
           <tr><td>네이버 블로그</td><td>색인 0건</td></tr>
-          <tr><td>네이버 카페 brownfarmofficial</td><td><strong style="color:var(--neg);">WebFetch 완전 차단</strong> ("Claude Code is unable to fetch") — 로그인 벽이 아닌 도메인 수준 차단</td></tr>
+          <tr><td>네이버 카페 brownfarmofficial</td><td><strong style="color:var(--pos);">Naver Search API 접근 성공</strong> — 공식 카페 게시글 2건 수집 (버그 신고)</td></tr>
           <tr><td>루리웹 / 인벤</td><td>전용 게시판 없음, 구 기사만</td></tr>
           <tr><td>나무위키</td><td>403 접근 불가</td></tr>
         </tbody>
       </table>
-      <div class="diag"><strong>스카우트 진단:</strong> DC 마이너 갤러리 최신 일반 유저 글 2025-03-09 이후 전무. 사실상 휴면 상태.</div>
+      <div class="card neg">
+        <h4><span class="tag bug">버그</span> 윙크요정 마이멜로디(A) 배치 시 앱 튕김</h4>
+        <dl class="meta">
+          <dt>플랫폼</dt><dd>네이버 카페 (브라운팜 공식카페) — Naver API</dd>
+          <dt>작성일</dt><dd>미확인 (API 최신순 기준)</dd>
+          <dt>URL</dt><dd><a href="https://cafe.naver.com/brownfarmofficial/257165" target="_blank">cafe.naver.com/brownfarmofficial/257165</a></dd>
+          <dt>요지</dt><dd>윙크요정 마이멜로디(A)를 하우스에 배치하면 앱 튕김 발생. 앱 종료·LINE GAME 화면 이동 등 다양한 형태로 재현됨.</dd>
+          <dt>감정</dt><dd><span class="sent neg">부정</span></dd>
+        </dl>
+      </div>
+      <div class="card neg" style="margin-top:10px;">
+        <h4><span class="tag bug">버그</span> 앱 접속 불가 오류</h4>
+        <dl class="meta">
+          <dt>플랫폼</dt><dd>네이버 카페 (브라운팜 공식카페) — Naver API</dd>
+          <dt>작성일</dt><dd>미확인 (API 최신순 기준)</dd>
+          <dt>URL</dt><dd><a href="https://cafe.naver.com/brownfarmofficial/256369" target="_blank">cafe.naver.com/brownfarmofficial/256369</a></dd>
+          <dt>요지</dt><dd>앱이 열리지 않는 오류. 앱 종료·로그인 버튼 화면 이동 형태로 재현. 공식 카페 신고 접수됨.</dd>
+          <dt>감정</dt><dd><span class="sent neg">부정</span></dd>
+        </dl>
+      </div>
+      <div class="diag"><strong>스카우트 진단:</strong> DC 마이너 갤러리 최신 일반 유저 글 2025-03-09 이후 전무. 사실상 휴면 상태. 네이버 공식 카페는 WebFetch 차단이나 <strong>Naver Search API로 우회 접근 성공</strong> — 버그 신고 2건 수집. (API 제한: 본문 전체 불가, 게시일 미제공)</div>
     </div>
   </section>
 
@@ -334,15 +354,15 @@
     <div class="sb">
       <div class="stat-row">
         <div class="stat pos"><div class="num">3</div><div class="lbl">긍정</div></div>
-        <div class="stat neg"><div class="num">2</div><div class="lbl">부정</div></div>
+        <div class="stat neg"><div class="num">4</div><div class="lbl">부정</div></div>
         <div class="stat neu"><div class="num">1</div><div class="lbl">중립</div></div>
       </div>
       <ul style="margin-top:12px; font-size:.88rem;">
         <li>긍정: LINE STORE 다이아 이벤트 · JP 10년 장기 유저 리뷰 · 5/8 콜라보 예고</li>
-        <li>부정: JP 메가브라운 형평성 불만 · Google Play 창고 불만(기간 외)</li>
+        <li>부정: JP 메가브라운 형평성 불만 · Google Play 창고 불만(기간 외) · KR 마이멜로디 배치 튕김 버그 · KR 앱 접속 불가 오류</li>
         <li>중립: TW 바하무트 이벤트 공지</li>
       </ul>
-      <p style="margin-top:10px; font-size:.86rem; color:var(--muted);">주요 키워드: #메가브라운 #형평성 #과금불만 #화과자버그 #다이아보너스이벤트 #コラボ불일치</p>
+      <p style="margin-top:10px; font-size:.86rem; color:var(--muted);">주요 키워드: #메가브라운 #형평성 #과금불만 #화과자버그 #다이아보너스이벤트 #コラボ불일치 #앱튕김</p>
     </div>
   </section>
 
@@ -400,7 +420,7 @@
         <li><strong>Twilog HTTP 429 차단</strong> — 2026-04-14부터 차단 (ITmedia 보도). 대체 소스 없음.</li>
         <li><strong>Dcard 403 차단</strong> — 전용 토픽 페이지 직접 접근 실패. 다음 주 재시도.</li>
         <li><strong>TW 바하무트 날짜 추정</strong> — "前天" 상대 표현 기반, ±1일 오차 가능</li>
-        <li><strong>네이버 카페 WebFetch 완전 차단</strong> — 로그인 벽이 아닌 도메인 수준 차단. Naver Open API 검토 필요.</li>
+        <li><strong>네이버 카페 WebFetch 차단</strong> → Naver Search API로 우회 성공. 단, API는 제목·스니펫·URL만 반환 (본문 전체 불가, 게시일 미제공).</li>
         <li><strong>YouTube/TikTok 동적 렌더링</strong> — 실제 영상 있어도 탐지 실패 가능</li>
         <li><strong>5/8 콜라보 파트너</strong> — 3차 조사 모두 다른 답. 환각 의심, 내부 확인 필수.</li>
       </ul>
