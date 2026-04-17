@@ -24,16 +24,19 @@ model: sonnet
 
 ### 🇯🇵 일본
 - 5ch: `site:5ch.net ブラウンファーム` · 모바일게임 게시판 · 구글 매트매 사이트
-- LINE GAME 공식 블로그: `linegame-official.blog.jp` (이미 접근 가능 승인 범위)
+- LINE GAME 공식 블로그: `linegame-official.blog.jp`
 - Gamerch 공략위키: `brownfarm.gamerch.com`
 - Yumatti (블로그): `www.yumatti.com`
-- 기타 일본 모바일 게임 블로그·매트매 사이트
+- **[우선순위 높음] App Store 리뷰 전문 사이트 3종** (날짜순 크롤링 가능, 주 1~3건 신규 발생):
+  - `app-spgame.net`: `https://app-spgame.net/user_review/detail/?gid=1200` — 날짜순 App Store 리뷰, 가장 신뢰도 높음
+  - `appreview.jp`: `https://appreview.jp/app/ce22c7f7c1ff1f8cd2d58c098077b864` — App Store + Google Play 통합
+  - `app-ranking.net`: `https://www.app-ranking.net/id/949344041` — 저평가순·최신순 정렬, 장문 불만 리뷰 축적
 
 ### 🇹🇼 대만
 - PTT: `site:ptt.cc 熊大農場` 또는 `ptt.cc/bbs/MobileComm` 계열
-- Dcard: `site:dcard.tw 熊大農場`
-- 巴哈姆特(Gamer): `forum.gamer.com.tw` 관련 보드
-- News Pie: `www.newspie.com.tw` (이미 승인 범위)
+- Dcard: **전용 토픽 페이지 직접 접근** `https://www.dcard.tw/topics/熊大農場` (기존 site: 검색보다 정확)
+- 巴哈姆特(Gamer): `https://forum.gamer.com.tw/B.php?bsn=29387` — 2026년 4월까지 활발, 직접 페치 가능
+- News Pie: `www.newspie.com.tw`
 - 대만 공식 사이트: `brownfarm.game.line.me/tw/`
 
 ### 🇹🇭 태국
@@ -58,10 +61,16 @@ model: sonnet
 - 페이스북 그룹은 접근 불가 — 건너뜀
 
 ## 작업 절차
-1. WebSearch로 각 지역별 대표 쿼리 최소 1회씩 시도 (총 10–15개). 일본·대만은 현지어 표기 필수, SEA는 영어 기반 + 현지어 병행.
-2. 유망 링크는 WebFetch로 본문·작성일 확인. 많은 플랫폼이 봇 차단/로그인 벽 있음 — 실패 시 "본문 확인 실패, 검색 스니펫 기준" 명시.
-3. **지난 7일** 이내 게시물 우선. 중요도(조회수·댓글·화제성·공식 여부) 기준 상위 7개 선별.
-4. 지역별 쏠림을 피하고 가능하면 **여러 지역에서 최소 1건씩** 담아오면 좋음 (데이터 있을 때에 한해).
+1. **JP 리뷰 사이트 3종을 매주 반드시 직접 WebFetch**로 확인한다 (검색 의존 금지):
+   - `https://app-spgame.net/user_review/detail/?gid=1200`
+   - `https://appreview.jp/app/ce22c7f7c1ff1f8cd2d58c098077b864`
+   - `https://www.app-ranking.net/id/949344041`
+2. **TW 바하무트·Dcard**도 직접 WebFetch로 확인:
+   - `https://forum.gamer.com.tw/B.php?bsn=29387`
+   - `https://www.dcard.tw/topics/熊大農場`
+3. WebSearch로 나머지 지역별 대표 쿼리 시도 (총 10개 이상). 일본·대만은 현지어 표기 필수, SEA는 영어 + 현지어 병행.
+4. **지난 7일** 이내 게시물 우선. 중요도(조회수·댓글·화제성·공식 여부) 기준 상위 7개 선별.
+5. 지역별 쏠림을 피하고 가능하면 **여러 지역에서 최소 1건씩** 담아오면 좋음 (데이터 있을 때에 한해).
 
 ## 반환 형식 (마크다운, 항목별)
 

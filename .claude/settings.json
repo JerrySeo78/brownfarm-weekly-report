@@ -31,7 +31,11 @@
       "WebFetch(domain:apps.apple.com)",
       "WebFetch(domain:www.reddit.com)",
       "WebFetch(domain:miniwebtool.com)",
-      "WebFetch(domain:www.gamersunite.com)"
+      "WebFetch(domain:www.gamersunite.com)",
+      "WebFetch(domain:app-spgame.net)",
+      "WebFetch(domain:appreview.jp)",
+      "WebFetch(domain:www.app-ranking.net)",
+      "WebFetch(domain:www.dcard.tw)"
     ],
     "additionalDirectories": [
       "f:\\Personal_project\\Sample_rearch\\.claude\\commands",
