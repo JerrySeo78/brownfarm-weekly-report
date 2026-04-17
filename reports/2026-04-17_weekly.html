@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>브라운팜 커뮤니티 위클리 리포트 — 2026-04-17</title>
+<style>
+  :root {
+    --bg: #f5f5f0;
+    --card: #ffffff;
+    --border: #e2e2dc;
+    --text: #1a1a1a;
+    --muted: #666660;
+    --accent: #3d7a3d;
+    --accent-light: #eef5ee;
+    --warn: #b85c00;
+    --warn-light: #fff4ea;
+    --neg: #b00020;
+    --neg-light: #fff0f2;
+    --pos: #1a6e2e;
+    --pos-light: #edf7ef;
+    --neutral: #3a4a6b;
+    --neutral-light: #eef1f8;
+    --code-bg: #f0f0eb;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.75;
+    padding: 0 0 60px;
+  }
+
+  header {
+    background: linear-gradient(135deg, #2d5a2d 0%, #4a8a4a 100%);
+    color: #fff;
+    padding: 36px 32px 28px;
+  }
+
+  header h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  header .subtitle { opacity: 0.82; font-size: 0.88rem; }
+
+  .badge-row { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 99px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  .alert-box {
+    background: var(--warn-light);
+    border-left: 4px solid var(--warn);
+    border-radius: 4px;
+    padding: 16px 18px;
+    margin: 28px 0 0;
+    font-size: 0.93rem;
+  }
+
+  .alert-box strong { color: var(--warn); }
+
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 20px;
+    overflow: hidden;
+  }
+
+  .section-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fafaf7;
+  }
+
+  .section-header h2 { font-size: 1.02rem; font-weight: 700; }
+
+  .section-body { padding: 18px 20px; }
+  .section-body p { margin-bottom: 10px; }
+  .section-body p:last-child { margin-bottom: 0; }
+
+  .zero-banner {
+    background: #f7f7f2;
+    border: 1px dashed #ccc;
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+  }
+
+  .zero-banner strong { color: var(--text); }
+
+  .ref-card {
+    background: var(--neutral-light);
+    border: 1px solid #c8d0e8;
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-top: 14px;
+    font-size: 0.88rem;
+  }
+
+  .ref-card h4 {
+    font-size: 0.93rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--neutral);
+  }
+
+  .ref-card h4 .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    background: var(--neutral);
+    color: #fff;
+    border-radius: 3px;
+    padding: 1px 6px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  .ref-card dl { display: grid; grid-template-columns: 80px 1fr; gap: 3px 10px; }
+  .ref-card dt { color: var(--muted); font-size: 0.82rem; padding-top: 1px; }
+  .ref-card dd { font-size: 0.88rem; }
+
+  .sentiment {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .sentiment.pos { background: var(--pos-light); color: var(--pos); }
+  .sentiment.neg { background: var(--neg-light); color: var(--neg); }
+  .sentiment.neu { background: var(--neutral-light); color: var(--neutral); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 10px 0; }
+
+  th {
+    background: #f2f2ec;
+    text-align: left;
+    padding: 8px 12px;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+  }
+
+  td { padding: 7px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #fafaf5; }
+
+  code {
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Menlo', monospace;
+    font-size: 0.83em;
+    color: #3a3a3a;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  ul, ol { padding-left: 1.3em; margin: 8px 0; }
+  li { margin-bottom: 4px; }
+
+  .diag {
+    background: #f7f7f2;
+    border-left: 3px solid #bbb;
+    padding: 10px 14px;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.86rem;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+
+  .diag strong { color: var(--text); }
+
+  .trend-list li { margin-bottom: 8px; }
+
+  .stat-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 10px 0; }
+
+  .stat-chip {
+    flex: 1 1 120px;
+    background: #f7f7f2;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    text-align: center;
+  }
+
+  .stat-chip .num { font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
+  .stat-chip .label { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+  .stat-chip.pos .num { color: var(--pos); }
+  .stat-chip.neg .num { color: var(--neg); }
+  .stat-chip.neu .num { color: var(--neutral); }
+
+  .limit-list { counter-reset: limit-counter; list-style: none; padding: 0; }
+
+  .limit-list li {
+    counter-increment: limit-counter;
+    padding: 8px 12px 8px 44px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  .limit-list li:last-child { border-bottom: none; }
+
+  .limit-list li::before {
+    content: counter(limit-counter);
+    position: absolute;
+    left: 12px;
+    top: 9px;
+    background: #ddd;
+    color: #555;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .timeline-list { list-style: none; padding: 0; }
+
+  .timeline-list li {
+    padding: 6px 0 6px 22px;
+    position: relative;
+    border-bottom: 1px solid #eee;
+    font-size: 0.88rem;
+  }
+
+  .timeline-list li:last-child { border-bottom: none; }
+
+  .timeline-list li::before {
+    content: '●';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.6rem;
+    top: 10px;
+  }
+
+  .timeline-date { font-weight: 600; color: var(--muted); margin-right: 6px; }
+
+  .sub-section { margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--border); }
+  .sub-section h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; }
+
+  footer {
+    margin-top: 32px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding: 0 20px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>🌾 브라운팜 커뮤니티 위클리 리포트</h1>
+    <div class="subtitle">2026-04-17 · 조사 기간: 2026-04-10 ~ 2026-04-17 (지난 7일)</div>
+    <div class="badge-row">
+      <span class="badge">🌏 영어권</span>
+      <span class="badge">🐦 SNS</span>
+      <span class="badge">📺 영상</span>
+      <span class="badge">🇰🇷 한국</span>
+      <span class="badge">🌏 아시아</span>
+      <span class="badge">✅ asia scout 정식 등록</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- 금주의 핵심 -->
+  <section>
+    <div class="section-header"><span>🔥</span><h2>금주의 핵심</h2></div>
+    <div class="section-body">
+      <div class="alert-box">
+        <strong>금주 수집 검증 가능한 신규 언급 0건.</strong> 5개 채널(해외 영어권 · SNS · 영상 · 한국 · 아시아) 모두 2026-04-10 ~ 2026-04-17 윈도우 내 확인된 신규 게시물·영상·포스트 없음.<br><br>
+        그 자체가 이번 주의 가장 중요한 신호: <strong>커뮤니티 활동이 전 지역에서 매우 잠잠한 공백기</strong> (일본 Studio UG 콜라보 4/8 종료 → 5/8 신규 콜라보 예고 사이).
+      </div>
+      <p style="margin-top:14px; font-size:0.9rem; color:var(--muted);">금주 Top N 항목 없음. 조사 중 기간 외에서 확인된 배경 맥락 상위 5:</p>
+      <ol style="margin-top:8px;">
+        <li><strong>5/8 신규 콜라보 개시 예고</strong> — @LINE_BF_JP 공식 X 계정, 기간 외 (날짜 미확인)</li>
+        <li><strong>3/10~4/8 Studio UG × 니시무라 유지 콜라보 종료</strong> — 공식 블로그 2026-03-10자 포스트 확인</li>
+        <li><strong>巴哈姆特(대만) 열차 랭킹전 이벤트</strong> — 2026-04-08 게시, 4월 20일까지 진행 (조사 기간 2일 이전)</li>
+        <li><strong>Google Play 앱 업데이트 2026-03-16</strong> — Travel Pass 신규 기능, Lost Item Center, Tree Climbing Support Missions 추가</li>
+        <li><strong>DC 라인 브라운팜 마이너 갤러리 사실상 고사 상태</strong> — 최신 글 2026-03-09, 조회수 11</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 주간 트렌드 -->
+  <section>
+    <div class="section-header"><span>📈</span><h2>주간 트렌드</h2></div>
+    <div class="section-body">
+      <p style="font-size:0.88rem; color:var(--muted); margin-bottom:10px;">직전 리포트(2026-04-17) 대비 동일 기간 재조사. 변화 포인트:</p>
+      <ul class="trend-list">
+        <li><strong>brownfarm-scout-asia 세션 재등록 확인</strong> — 이번 주부터 아시아 스카우트가 정식 서브에이전트로 작동. 직전 리포트의 메인 세션 fallback에서 전환됨.</li>
+        <li><strong>巴哈姆特 신규 확인</strong> — 대만 포럼에서 4월 20일까지 열차 랭킹전 이벤트 진행 중임을 이번 조사에서 처음 확인. 직전 리포트 미수록 항목.</li>
+        <li><strong>BROWN TOYS 출시 확인</strong> — 브라운팜 후속작이 2025-04-22 정식 출시된 사실이 복수 스카우트에서 일관되게 확인됨.</li>
+        <li>전체 신규 언급 수: 0건 → 0건 (변화 없음). 공백기 지속.</li>
+        <li>다음 주(2026-04-24) 리포트에서 5/8 콜라보 예고 관련 <strong>사전 버즈 포착 여부</strong>가 핵심 관전 포인트.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 해외 영어권 -->
+  <section>
+    <div class="section-header"><span>🌏</span><h2>해외 영어권 커뮤니티 (Reddit · 포럼)</h2></div>
+    <div class="section-body">
+      <div class="zero-banner">
+        지난 7일 내 Reddit · TouchArcade · Pocket Gamer · AppAdvice · TapTap · Gamers Unite 등에서 <strong>새 언급 0건</strong>.
+      </div>
+      <p style="font-size:0.88rem; font-weight:600; margin-bottom:6px;">점검 쿼리 14개 — 주요 내역</p>
+      <table>
+        <thead><tr><th>쿼리</th><th>결과</th></tr></thead>
+        <tbody>
+          <tr><td><code>"LINE Brown Farm" reddit 2026</code></td><td>Reddit 언급 없음</td></tr>
+          <tr><td><code>LINE Brown Farm site:reddit.com</code></td><td>결과 0건</td></tr>
+          <tr><td><code>LINE Brown Farm r/mobilegaming OR r/AndroidGaming</code></td><td>결과 없음</td></tr>
+          <tr><td><code>LINE Brown Farm TapTap review 2026</code></td><td>TapTap "not enough ratings" 상태</td></tr>
+          <tr><td><code>LINE Brown Farm site:toucharcade.com</code></td><td>TouchArcade 403 접근 차단</td></tr>
+          <tr><td><code>LINE Brown Farm site:appadvice.com</code></td><td>ECONNREFUSED</td></tr>
+        </tbody>
+      </table>
+
+      <div class="ref-card">
+        <h4><span class="tag">기간 외</span> Google Play 유저 리뷰 — 창고 확장·아이템 수급 불만</h4>
+        <dl>
+          <dt>작성자</dt><dd>Tmy</dd>
+          <dt>작성일</dt><dd>2026-03-17</dd>
+          <dt>URL</dt><dd><a href="https://play.google.com/store/apps/details?id=com.linecorp.LGFARM&hl=en" target="_blank">Google Play</a></dd>
+          <dt>요지</dt><dd>2019년 플레이 후 복귀 유저. 창고 확장 비용 과다, 필요 소재 항상 품절이라 불만.</dd>
+          <dt>원문</dt><dd><em>"It's getting hard to expand my warehouse and land. It makes me frustrated when I search for items but they are always sold out."</em></dd>
+          <dt>감정</dt><dd><span class="sentiment neg">부정</span></dd>
+        </dl>
+      </div>
+
+      <div class="ref-card">
+        <h4><span class="tag">기간 외</span> Google Play 앱 업데이트 — Travel Pass 신규 기능</h4>
+        <dl>
+          <dt>작성일</dt><dd>2026-03-16</dd>
+          <dt>요지</dt><dd>Travel Pass 신규 기능, Lost Item Center 및 Tree Climbing Support Missions 추가, 마이너 버그 픽스.</dd>
+          <dt>감정</dt><dd><span class="sentiment neu">중립</span></dd>
+        </dl>
+      </div>
+
+      <div class="diag">
+        <strong>스카우트 진단:</strong> TouchArcade 403 · AppAdvice ECONNREFUSED 지속. TapTap 리뷰 집계 미달 상태. Reddit은 검색 엔진 인덱싱 한계로 최신 7일 게시물 탐지 실패 가능성 존재.
+      </div>
+    </div>
+  </section>
+
+  <!-- SNS -->
+  <section>
+    <div class="section-header"><span>🐦</span><h2>SNS (X · Threads)</h2></div>
+    <div class="section-body">
+      <div class="zero-banner">
+        지난 7일 내 X · Threads <strong>직접 확인된 신규 포스트 0건</strong>.<br>
+        주요 제약: X 직접 접근 HTTP 402 전면 차단, Twilog HTTP 429.
+      </div>
+      <p style="font-size:0.88rem; font-weight:600; margin-bottom:6px;">점검 쿼리 8개 — 주요 내역</p>
+      <table>
+        <thead><tr><th>쿼리</th><th>결과</th></tr></thead>
+        <tbody>
+          <tr><td><code>"ブラウンファーム" site:x.com 2026</code></td><td>2025년 포스트만 노출</td></tr>
+          <tr><td><code>"LINE Brown Farm" site:x.com 2026</code></td><td>공식 프로필 URL만 반환</td></tr>
+          <tr><td><code>"브라운팜" site:x.com 2026</code></td><td>무관 결과</td></tr>
+          <tr><td><code>"브라운팜" site:threads.net 2026</code></td><td>결과 없음</td></tr>
+          <tr><td>Twilog (twilog.togetter.com)</td><td>HTTP 429</td></tr>
+        </tbody>
+      </table>
+
+      <div class="ref-card">
+        <h4><span class="tag">기간 외</span> @LINE_BF_JP — 5/8 신규 콜라보 개시 예고</h4>
+        <dl>
+          <dt>계정</dt><dd>@LINE_BF_JP (공식)</dd>
+          <dt>URL</dt><dd><a href="https://x.com/LINE_BF_JP/status/1918138381076447264" target="_blank">x.com/LINE_BF_JP/…</a></dd>
+          <dt>원문(일)</dt><dd>「みんなに朗報じゃ！5月8日11:00よりコラボ開始だぞ。特別なコラボアイテムをGETできるチャンスじゃ」</dd>
+          <dt>번역</dt><dd>여러분에게 낭보! 5월 8일 11:00부터 콜라보 시작. 특별 콜라보 아이템 획득 기회.</dd>
+          <dt>작성일</dt><dd>미확인 (Snowflake 역산 → 2025-05-08~09 게시 추정, 직접 확인 실패)</dd>
+          <dt>감정</dt><dd><span class="sentiment pos">긍정</span></dd>
+        </dl>
+      </div>
+
+      <div class="diag">
+        <strong>스카우트 진단:</strong> X 공식 API 또는 로그인 세션 없이는 공식 계정 타임라인 검증이 구조적으로 불가. Threads 공개 포스트 0건.
+      </div>
+    </div>
+  </section>
+
+  <!-- 영상 -->
+  <section>
+    <div class="section-header"><span>📺</span><h2>영상 (YouTube · TikTok)</h2></div>
+    <div class="section-body">
+      <div class="zero-banner">
+        지난 7일 내 YouTube · TikTok 신규 업로드 <strong>0건</strong>.<br>
+        점검 쿼리 12개 이상 — 한/영/일/번체 다국어 시도.
+      </div>
+      <p style="font-size:0.88rem; font-weight:600; margin-bottom:6px;">점검 쿼리 예시</p>
+      <ul style="font-size:0.87rem;">
+        <li><code>브라운팜 site:youtube.com 2026</code></li>
+        <li><code>"LINE Brown Farm" site:youtube.com 2026</code></li>
+        <li><code>ブラウンファーム 攻略 動画 2026年4月</code></li>
+        <li><code>熊大農場 LINE 遊戲 2026 youtube</code></li>
+        <li><code>브라운팜 site:tiktok.com</code> / <code>LINE Brown Farm TikTok 2026</code></li>
+      </ul>
+      <div class="diag" style="margin-top:14px;">
+        <strong>스카우트 진단:</strong><br>
+        • YouTube: <code>site:</code> 연산자 및 일반 검색 모두 게임 정보·앱스토어 링크만 반환. 7일 내 업로드 영상 없음.<br>
+        • TikTok: <code>@line_brown_farm15</code> 계정 스니펫 확인, WebFetch 동적 렌더링 차단으로 날짜·제목 미확인 → 포함 불가.<br>
+        • 콜라보 공백기(4/8~5/8) 특성상 크리에이터 활동 침체로 판단.
+      </div>
+    </div>
+  </section>
+
+  <!-- 한국 -->
+  <section>
+    <div class="section-header"><span>🇰🇷</span><h2>한국 커뮤니티 (네이버 · DC)</h2></div>
+    <div class="section-body">
+      <div class="zero-banner">지난 7일 내 한국 커뮤니티 신규 언급 <strong>0건</strong>.</div>
+
+      <p style="font-size:0.88rem; font-weight:600; margin-bottom:6px;">점검 채널</p>
+      <table>
+        <thead><tr><th>채널</th><th>결과</th></tr></thead>
+        <tbody>
+          <tr><td>DC 라인 브라운팜 마이너 갤러리 (<code>linebrown2</code>)</td><td>직접 목록 접근 성공. 7일 내 신규 글 0건.</td></tr>
+          <tr><td>네이버 블로그 (<code>site:blog.naver.com 라인 브라운팜</code>)</td><td>색인 반환 0건</td></tr>
+          <tr><td>네이버 카페 <code>brownfarmofficial</code></td><td>로그인 벽으로 접근 불가</td></tr>
+          <tr><td>루리웹</td><td>전용 게시판 없음, 최근 언급 없음</td></tr>
+          <tr><td>인벤</td><td>최신글 없음 (2014·2021년 구 기사만 반환)</td></tr>
+          <tr><td>나무위키</td><td>403 접근 불가</td></tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:0.88rem; font-weight:600; margin: 14px 0 6px;">DC 마이너 갤러리 최신 목록</p>
+      <table>
+        <thead><tr><th>번호</th><th>제목</th><th>작성일</th><th>조회</th><th>댓글</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>1035</td>
+            <td><a href="https://gall.dcinside.com/mgallery/board/view/?id=linebrown2&no=1035" target="_blank">3/10 스튜디오UG-니시무라유지 콜라보</a></td>
+            <td>2026-03-09</td><td>11</td><td>0</td>
+          </tr>
+          <tr>
+            <td>1034</td>
+            <td>붉은사막·GTA 6 등 2026 PC·콘솔 기대작 35선 (어뷰징 추정)</td>
+            <td>2025-12-22</td><td>4,256</td><td>0</td>
+          </tr>
+          <tr>
+            <td>1033</td>
+            <td>산리오 캐릭터즈 콜라보(10/28~)</td>
+            <td>2025-10-27</td><td>53</td><td>0</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="ref-card">
+        <h4><span class="tag">기간 외</span> DC 갤러리 1035번 — 스튜디오UG 콜라보 안내</h4>
+        <dl>
+          <dt>작성일</dt><dd>2026-03-09</dd>
+          <dt>URL</dt><dd><a href="https://gall.dcinside.com/mgallery/board/view/?id=linebrown2&no=1035" target="_blank">gall.dcinside.com</a></dd>
+          <dt>요지</dt><dd>스튜디오UG × 니시무라유지 콜라보 이미지 공유. "찾아봐도 무슨 캐릭터 IP인지 잘 모르겠어" 코멘트. 반응 없음(댓글 0).</dd>
+          <dt>감정</dt><dd><span class="sentiment neu">중립</span></dd>
+        </dl>
+      </div>
+
+      <div class="diag">
+        <strong>스카우트 진단:</strong> 갤러리 총 1035번 중 사실상 고정닉 한 명이 정보 업로드하는 구조. 2026년 들어 신규 글이 3월 1건이 전부. 일반 유저 자발적 게시 전무.
+      </div>
+    </div>
+  </section>
+
+  <!-- 아시아 -->
+  <section>
+    <div class="section-header"><span>🌏</span><h2>아시아 커뮤니티 (일본 · 대만 · 동남아)</h2></div>
+    <div class="section-body">
+      <div class="zero-banner">
+        지난 7일(2026-04-10 ~ 2026-04-17) 내 아시아 커뮤니티 <strong>검증된 신규 언급 0건</strong>.<br>
+        ✅ 이번 주부터 <code>brownfarm-scout-asia</code> 서브에이전트 정식 작동 확인 (세션 재시작 후 등록 완료).
+      </div>
+
+      <!-- 일본 -->
+      <div class="sub-section">
+        <h3>🇯🇵 일본</h3>
+        <table>
+          <thead><tr><th>플랫폼</th><th>결과</th></tr></thead>
+          <tbody>
+            <tr><td>5ch (<code>site:5ch.net ブラウンファーム</code>)</td><td>스레드 존재하나 마지막 활동 2020년대 초반. 7일 내 신규 없음.</td></tr>
+            <tr><td>LINE GAME 공식 블로그</td><td>4/10 이후 신규 포스팅 0건. 최신: 2026-03-10.</td></tr>
+            <tr><td>Gamerch 공략위키</td><td>검색 색인 0건</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.88rem; font-weight:600; margin: 12px 0 6px;">공식 블로그 최근 포스트 타임라인</p>
+        <ul class="timeline-list">
+          <li><span class="timeline-date">2026-03-10</span> Studio UG 콜라보 — <a href="https://linegame-official.blog.jp/archives/63037281.html" target="_blank">블로그 링크</a></li>
+          <li><span class="timeline-date">2025-12-23</span> 베르사유의 장미 콜라보 — <a href="https://linegame-official.blog.jp/archives/62845352.html" target="_blank">블로그 링크</a></li>
+          <li><span class="timeline-date">2025-10-28</span> 산리오 캐릭터즈 콜라보 — <a href="https://linegame-official.blog.jp/archives/62707070.html" target="_blank">블로그 링크</a></li>
+          <li><span class="timeline-date">2025-08-25</span> 오자마 도레미 콜라보 — <a href="https://linegame-official.blog.jp/archives/62582858.html" target="_blank">블로그 링크</a></li>
+          <li><span class="timeline-date">2025-05-08</span> 닌타마 란타로 콜라보 — <a href="https://linegame-official.blog.jp/archives/62292990.html" target="_blank">블로그 링크</a></li>
+        </ul>
+        <p style="font-size:0.86rem; margin-top:8px; color:var(--muted);"><strong style="color:var(--text);">주기 해석:</strong> 대략 1–2개월 간격. 다음 포스트는 5/8 콜라보 개시 시점과 맞물릴 가능성 높음.</p>
+      </div>
+
+      <!-- 대만 -->
+      <div class="sub-section">
+        <h3>🇹🇼 대만</h3>
+        <table>
+          <thead><tr><th>플랫폼</th><th>결과</th></tr></thead>
+          <tbody>
+            <tr><td>PTT (<code>site:ptt.cc 熊大農場</code>)</td><td>최신 게시물 2020년 9월. 7일 내 신규 없음.</td></tr>
+            <tr><td>Dcard (<code>site:dcard.tw 熊大農場</code>)</td><td>4/10 이후 신규 0건</td></tr>
+            <tr><td>巴哈姆特 (forum.gamer.com.tw)</td><td>직접 페치 성공. 7일 내(4/10~) 신규 글 없음. 최신: <strong>2026-04-08</strong></td></tr>
+            <tr><td>News Pie (newspie.com.tw)</td><td>최신 기사 2026-03-10. 7일 내 0건.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="ref-card" style="background:var(--pos-light); border-color:#b8d8c0;">
+          <h4><span class="tag" style="background:var(--pos);">기간 외</span> 巴哈姆特 — 열차 랭킹전 이벤트 정보 (주목)</h4>
+          <dl>
+            <dt>지역</dt><dd>🇹🇼 대만</dd>
+            <dt>플랫폼</dt><dd>巴哈姆特 (<a href="https://forum.gamer.com.tw/B.php?bsn=29387" target="_blank">forum.gamer.com.tw</a>)</dd>
+            <dt>작성자</dt><dd>bill90211</dd>
+            <dt>작성일</dt><dd><strong>2026-04-08</strong> (조사 기간 2일 이전)</dd>
+            <dt>원문</dt><dd>「【情報】列車排名賽活動登場！2026年4月20日9:59止」</dd>
+            <dt>번역</dt><dd>열차 랭킹전 이벤트 등장, 4월 20일 9:59까지 진행.</dd>
+            <dt>감정</dt><dd><span class="sentiment neu">중립</span> (정보 공유)</dd>
+          </dl>
+        </div>
+      </div>
+
+      <!-- 동남아 -->
+      <div class="sub-section">
+        <h3>🇹🇭 태국 · 🇮🇩 인니 · 🇻🇳 베트남 · 🇵🇭 필리핀</h3>
+        <table>
+          <thead><tr><th>플랫폼</th><th>결과</th></tr></thead>
+          <tbody>
+            <tr><td>Pantip (<code>site:pantip.com "LINE Brown Farm"</code>)</td><td>최신 2016–2017년 수준. 0건.</td></tr>
+            <tr><td>Kaskus (<code>site:kaskus.co.id "LINE Brown Farm"</code>)</td><td>색인 없음, 0건.</td></tr>
+            <tr><td>voz.vn / tinhte.vn</td><td>0건.</td></tr>
+            <tr><td>Reddit r/Philippines</td><td>0건.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="diag" style="margin-top:16px;">
+        <strong>아시아 스카우트 종합 진단:</strong><br>
+        • 일본 공식 블로그는 중심 허브로 작동 중이나 월간 주기 → 주간 리포트 관점에선 정보 밀도 낮음.<br>
+        • 대만: 巴哈姆特가 그나마 활발. 4/8 열차 랭킹전 게시물 확인 → 4/20 이후 플레이 후기 게시 가능성 있음.<br>
+        • 동남아는 커뮤니티 존재감 희박. 개인 SNS/페이스북 그룹으로 분산됐을 가능성.
+      </div>
+    </div>
+  </section>
+
+  <!-- 감정 흐름 -->
+  <section>
+    <div class="section-header"><span>📊</span><h2>전체 감정 흐름</h2></div>
+    <div class="section-body">
+      <p style="font-size:0.88rem; color:var(--muted); margin-bottom:12px;">금주 수집 항목 없음 — 집계 불가 (기간 내 0건)</p>
+      <div class="stat-row">
+        <div class="stat-chip pos"><div class="num">0</div><div class="label">긍정</div></div>
+        <div class="stat-chip neg"><div class="num">0</div><div class="label">부정</div></div>
+        <div class="stat-chip neu"><div class="num">0</div><div class="label">중립</div></div>
+      </div>
+      <p style="font-size:0.86rem; margin-top:14px; color:var(--muted);">
+        기간 외 참고: 긍정 2건(5/8 콜라보 예고×1, 공식 블로그 콜라보 공지×1) · 부정 1건(Google Play 창고 불만) · 중립 3건(앱 업데이트, 巴哈姆特 이벤트, DC 콜라보 정보)
+      </p>
+    </div>
+  </section>
+
+  <!-- 이슈 -->
+  <section>
+    <div class="section-header"><span>⚠️</span><h2>이슈/버그/운영 피드백</h2></div>
+    <div class="section-body">
+      <p>금주 수집된 신규 버그·운영 불만 <strong>없음</strong>.</p>
+      <div class="alert-box" style="margin-top:12px;">
+        <strong>구조적 신호:</strong> 한국·대만·영어권에서 <strong>공통적으로 팬 커뮤니티 활동성 급감</strong> 지속 확인. DC 갤러리 5~6주째 신규 자발적 게시 전무, 대만 PTT 2020년 이후 고사.
+      </div>
+    </div>
+  </section>
+
+  <!-- 한계 -->
+  <section>
+    <div class="section-header"><span>📋</span><h2>이번 리포트의 한계 (투명성 기록)</h2></div>
+    <div class="section-body">
+      <ul class="limit-list">
+        <li><strong>X/Twitter WebFetch 전면 차단</strong> (HTTP 402) — 공식 계정 @LINE_BF_JP 금주 타임라인 직접 검증 불가</li>
+        <li><strong>Twilog HTTP 429</strong> — 2차 미러도 접근 불가</li>
+        <li><strong>네이버 카페 로그인 벽</strong> — 공식 카페 <code>brownfarmofficial</code> 내부 활동 관측 불가</li>
+        <li><strong>TikTok 동적 렌더링 차단</strong> — 실제 숏폼이 있어도 날짜/제목 확인 실패 가능</li>
+        <li><strong>구글 색인 지연</strong> — Reddit/X 최신 24h–7일 게시물 누락 가능</li>
+        <li><strong>동남아 포럼 인덱싱 부재</strong> — Pantip/Kaskus/voz.vn 검색 결과 0건은 실제 부재가 아닐 수 있음</li>
+      </ul>
+      <div class="diag" style="margin-top:14px;">
+        → 다음 단계 제안: <strong>X API v2 · 네이버 검색 Open API · YouTube Data API v3</strong> + 일본·대만·SEA 현지 포럼 전용 스크레이퍼
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>리포트 생성 2026-04-17 · 수집: brownfarm-scout-{western,sns,video,korean,asia} 5개 서브에이전트 병렬 호출</p>
+  <p style="margin-top:4px;">asia 스카우트 세션 재시작 후 정식 등록 확인 · 다음 리포트 2026-04-24 예정</p>
+</footer>
+
+</body>
+</html>

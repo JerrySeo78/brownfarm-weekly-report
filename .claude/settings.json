@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:x.com)",
+      "WebFetch(domain:appadvice.com)",
+      "WebFetch(domain:toucharcade.com)",
+      "WebFetch(domain:twilog.togetter.com)",
+      "WebFetch(domain:twilog.org)",
+      "WebFetch(domain:www.youtube.com)",
+      "WebFetch(domain:www.newspie.com.tw)",
+      "WebFetch(domain:xn--bckj5lc7c8b0dud.com)",
+      "WebFetch(domain:gall.dcinside.com)",
+      "WebFetch(domain:m.dcinside.com)",
+      "WebFetch(domain:usamaru.jp)",
+      "WebFetch(domain:www.aayyy.com)",
+      "WebFetch(domain:www.tiktok.com)",
+      "WebFetch(domain:appgrooves.com)",
+      "WebFetch(domain:play.google.com)",
+      "WebFetch(domain:brownfarm.game.line.me)",
+      "WebFetch(domain:bbs.ruliweb.com)",
+      "WebFetch(domain:linegame-official.blog.jp)",
+      "WebFetch(domain:www.yumatti.com)",
+      "WebFetch(domain:www.beinews.net)",
+      "WebFetch(domain:namu.wiki)",
+      "WebFetch(domain:brownfarmkr.lineplaycorp.com)",
+      "WebFetch(domain:brownfarmkr.linenextcorp.com)",
+      "WebFetch(domain:cafe.naver.com)",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "WebFetch(domain:www.taptap.io)",
+      "WebFetch(domain:apps.apple.com)",
+      "WebFetch(domain:www.reddit.com)",
+      "WebFetch(domain:miniwebtool.com)",
+      "WebFetch(domain:www.gamersunite.com)"
+    ],
+    "additionalDirectories": [
+      "f:\\Personal_project\\Sample_rearch\\.claude\\commands",
+      "f:\\Personal_project\\Sample_rearch\\.claude\\agents"
+    ]
+  }
+}
